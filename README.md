@@ -20,7 +20,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 # Requirements
 
-The app is provided to you in a static state, but it needs to be changed to a fully dynamic React app. It has variety of functionality. You can check out a fully functional app at [here](https://mittflix.web.app/)
+The app is provided to you in a static state, but it needs to be changed to a fully dynamic React app. It has variety of functionality.
 
 ## Main Page
 

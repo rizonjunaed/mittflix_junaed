@@ -15,8 +15,8 @@ class App extends React.Component {
         <h1>hello world!</h1>        
       <BrowserRouter>
         <Switch>
-          <Route path="/" component={mainPage} />
-          <Route path="/my-list" component={myList} />
+          <Route exact={true} path="/" component={mainPage} />
+          <Route exact={true} path="/my-list" component={myList} />
         </Switch>
       </BrowserRouter>
       </div>        

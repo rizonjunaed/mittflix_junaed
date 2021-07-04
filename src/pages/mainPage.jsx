@@ -1,29 +1,10 @@
 import React from 'react';
+import {topbar as Topbar} from '../components/topbar.jsx';
 
 const ExampleComponent = () => (
   <div>
-<>
-        <header class="header">
-          <a href="/">
-            <img
-              src="https://fontmeme.com/permalink/190707/fd4735271a0d997cbe19a04408c896fc.png"
-              alt="netflix-font"
-              border="0"
-            />
-          </a>
-          <div id="navigation" class="navigation">
-            <nav>
-              <ul>
-                <li><a href="/myList">My List</a></li>
-              </ul>
-            </nav>
-          </div>
-          <form id="search" class="search">
-            <input type="search" placeholder="Search for a title..." value="" />
-            <div class="searchResults"></div>
-          </form>
-        </header>
-
+        <Topbar />
+         
         <div class="titleList">
           <div class="title">
             <h1>Action</h1>
@@ -291,9 +272,6 @@ const ExampleComponent = () => (
             </div>
           </div>
         </div>
-
-
-      </>
   </div>
 );
 

@@ -1,37 +1,38 @@
 import React from 'react';
 import {topbar as Topbar} from '../components/topbar.jsx';
 import {movie as Movie} from '../components/movie';
-import myListDb from '../myListDb.json';
 import SearchBar from '../components/searchBar';
+import { getAll } from '../MovieAPI.js';
 
 const MyList = () => {
-  let sortedFunction = function(a, b){ if (a.name < b.name){ return -1; } if (a.name > b.name ){return 1; } return 0; };
-  const sortedGenres = myListDb.genres.sort(sortedFunction);
-  let filteredFunction = function(currentMovie, currentGenreId){return currentMovie.genre_ids.includes(currentGenreId)};
+  const [allMovies, setAllMovies] = React.useState([]);
+  const [moviesToShow, setMoviesToShow] = React.useState(allMovies);
 
-  const [moviesToShow, setMoviesToShow] = React.useState(myListDb.movies);
   let updateMoviesToShow = function (updatedMovies){setMoviesToShow(updatedMovies)};
+
+  React.useEffect(function(){
+    const getMyListMovies = async function(){
+      const moviesFromDb = await getAll();
+      setAllMovies(moviesFromDb)
+      let filteredFunction = function(currentMovie){return currentMovie.my_list};
+      setMoviesToShow(moviesFromDb.filter(filteredFunction))
+    }
+    getMyListMovies();
+  },[])
   
   return (
       <div>
         <Topbar>
-        <SearchBar  moviesArray={myListDb.movies} updateMoviesToShowFunction={updateMoviesToShow} />
+          <SearchBar  moviesArray={allMovies} updateMoviesToShowFunction={updateMoviesToShow} />
         </Topbar>
-         {sortedGenres.map(function(currentGenre){
-           let filterMoviesResult = moviesToShow.filter(function (movieData){return filteredFunction(movieData, currentGenre.id)});
-           if(filterMoviesResult.length > 0){
-             let mapFunction = (function(movieData){return   <Movie title={movieData.title} vote_average={movieData.vote_average} overview={movieData.overview} poster_path={movieData.poster_path}/>})
-            return <div className="titleList">
-            <div className="title">
-              <h1>{currentGenre.name}</h1>
-              <div className="titles-wrapper">
-                {
-                  filterMoviesResult.map(mapFunction)
-                }            
-                </div>
+        <div className="titleList">
+          <div className="title">
+            <div className="titles-wrapper">
+              {moviesToShow.length > 0 && moviesToShow.map(function (movieData){return <Movie key={movieData.id} title={movieData.title} vote_average={movieData.vote_average} overview={movieData.overview} poster_path={movieData.poster_path}/>
+              })}
             </div>
           </div>
-           }})}
+        </div>
   </div>
 )};
 

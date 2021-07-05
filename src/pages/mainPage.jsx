@@ -1,6 +1,6 @@
 import React from 'react';
 import {topbar as Topbar} from '../components/topbar.jsx';
-import {movie as Movie} from '../components/movie';
+import Movie from '../components/movie';
 import SearchBar from '../components/searchBar';
 import { getAll, genres } from '../MovieAPI.js';
 
@@ -41,7 +41,7 @@ const MainPage = () => {
           {allSortedGenres.map(function(currentGenre){
            let filterMoviesResult = moviesToShow.filter(function (movieData){return filteredFunction(movieData, currentGenre.id)});
            if(filterMoviesResult.length > 0){
-             let mapFunction = (function(movieData){return <Movie key={movieData.id} title={movieData.title} vote_average={movieData.vote_average} overview={movieData.overview} poster_path={movieData.poster_path}/>})
+             let mapFunction = (function(movieData){return <Movie key={movieData.id} title={movieData.title} vote_average={movieData.vote_average} overview={movieData.overview} poster_path={movieData.poster_path} movie={movieData} />})
             return <div key={currentGenre.id} className="titleList">
               <div className="title">
                 <h1>{currentGenre.name}</h1>

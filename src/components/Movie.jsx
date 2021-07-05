@@ -1,16 +1,21 @@
+//movie component which shows the movie carts.
+
 import React from 'react';
 import { addToList, removeFromList } from '../MovieAPI';
 
 const Movie = function (props){
   const [movieAddedToList, setMovieAddedToList] = React.useState(props.movie.my_list);
+  //function for adding movie to my list in API.
   const addMovieToList = async function(){
     const updatedMovie = await addToList(props.movie);
     if (updatedMovie.my_list) {
     setMovieAddedToList(true)
     }
+    //reload all movies if movie is added in my list page.
     if(props.isInMyListPage){props.updateAllMoviesFunction([])}
   }
 
+  //function for removing movie to my list in API.
   const removeMovieFromList = async function(){
     const updatedMovie = await removeFromList(props.movie);
     if (!updatedMovie.my_list) {

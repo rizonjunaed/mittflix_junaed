@@ -1,7 +1,10 @@
+//component to show in '/my-list' route.
+//this shows all liked movies without grouping.
+//the liked movies come from API.
 import React from 'react';
-import {topbar as Topbar} from '../components/topbar.jsx';
-import Movie from '../components/movie';
-import SearchBar from '../components/searchBar';
+import TopBar from '../components/TopBar.jsx';
+import Movie from '../components/Movie';
+import SearchBar from '../components/SearchBar';
 import { getAll } from '../MovieAPI.js';
 
 const MyList = () => {
@@ -11,6 +14,8 @@ const MyList = () => {
   let updateAllMovies = function (movies){setAllMovies(movies)};
   let updateMoviesToShow = function (updatedMovies){setMoviesToShow(updatedMovies)};
 
+  //gets all movies from API and filters them by 'my_list' property of true.
+  //this runs on change of allMovies state and also on component first render.
   React.useEffect(function(){
     if (allMovies.length===0){
       const getMyListMovies = async function(){
@@ -25,9 +30,9 @@ const MyList = () => {
   
   return (
       <div>
-        <Topbar>
+        <TopBar>
           <SearchBar  moviesArray={moviesToShow} updateMoviesToShowFunction={updateMoviesToShow} />
-        </Topbar>
+        </TopBar>
         <div className="titleList">
           <div className="title">
             <div className="titles-wrapper">

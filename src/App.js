@@ -4,8 +4,8 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
-import mainPage from './pages/mainPage.jsx'
-import myList from './pages/myList.jsx'
+import MainPage from './pages/MainPage.jsx'
+import MyList from './pages/MyList.jsx'
 
 class App extends React.Component {
   render = () => {
@@ -13,8 +13,8 @@ class App extends React.Component {
       <div>        
         <BrowserRouter>
           <Switch>
-            <Route exact={true} path="/" component={mainPage} />
-            <Route exact={true} path="/my-list" component={myList} />
+            <Route exact={true} path="/" component={MainPage} />
+            <Route exact={true} path="/my-list" component={MyList} />
           </Switch>
         </BrowserRouter>
       </div>        

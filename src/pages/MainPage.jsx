@@ -1,7 +1,10 @@
+//component to show in '/' route.
+//this shows all movies grouped into genres.
+//the movies and the genres data come from API.
 import React from 'react';
-import {topbar as Topbar} from '../components/topbar.jsx';
-import Movie from '../components/movie';
-import SearchBar from '../components/searchBar';
+import TopBar from '../components/TopBar.jsx';
+import Movie from '../components/Movie';
+import SearchBar from '../components/SearchBar';
 import { getAll, genres } from '../MovieAPI.js';
 
 const MainPage = () => {
@@ -13,6 +16,7 @@ const MainPage = () => {
 
   let updateMoviesToShow = function (updatedMovies){setMoviesToShow(updatedMovies)};
   
+  //gets all genre from API and sorts them alphabetically on component first render.
   React.useEffect(function(){
     const getAllGenres = async function(){
       const genresFromDb = await genres();
@@ -22,6 +26,7 @@ const MainPage = () => {
     getAllGenres();
   },[])
 
+  //gets all movies from API on component first render.
   React.useEffect(function(){
     const getAllMovies = async function(){
       const moviesFromDb = await getAll();
@@ -35,9 +40,9 @@ const MainPage = () => {
       <div>
        {allSortedGenres.length > 0 && moviesToShow.length > 0 && (
          <>
-          <Topbar>
+          <TopBar>
             <SearchBar moviesArray={allMovies} updateMoviesToShowFunction={updateMoviesToShow} />
-          </Topbar>
+          </TopBar>
           {allSortedGenres.map(function(currentGenre){
            let filterMoviesResult = moviesToShow.filter(function (movieData){return filteredFunction(movieData, currentGenre.id)});
            if(filterMoviesResult.length > 0){

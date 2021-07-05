@@ -1,7 +1,9 @@
-   import React from 'react';   
-   import {Link} from 'react-router-dom';
+ //component for showing the top bar.
+ //this component can take html elements to show inside.
+ import React from 'react';   
+ import {Link} from 'react-router-dom';
 
-   export const topbar = function ({children}){
+    const TopBar = function ({children}){
         return  <header className="header">
           <Link to="/">
             <img
@@ -20,3 +22,4 @@
           {children}
         </header>
     } 
+export default TopBar

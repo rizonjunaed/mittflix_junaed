@@ -1,9 +1,9 @@
 import React from 'react';
 import {topbar as Topbar} from '../components/topbar.jsx';
 import {movie as Movie} from '../components/movie';
-import moviedb from '../clonedb.json';
+import moviedb from '../cloneDb.json';
 
-const ExampleComponent = () => {
+const mainPage = () => {
   let sortedFunction = function(a, b){ if (a.name < b.name){ return -1; } if (a.name > b.name ){return 1; } return 0; };
   const sortedGenres = moviedb.genres.sort(sortedFunction);
   let filteredFunction = function(currentMovie, currentGenreId){return currentMovie.genre_ids.includes(currentGenreId)};
@@ -29,4 +29,4 @@ const ExampleComponent = () => {
   </div>
 )};
 
-export default ExampleComponent;
+export default mainPage;

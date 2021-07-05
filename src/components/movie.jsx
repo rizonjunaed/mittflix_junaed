@@ -1,20 +1,20 @@
 import React from 'react';   
 
 export const movie = function (props){ 
-     return  <div class="movie">
+     return  <div className="movie">
      <img
        src={props.poster_path}
      />
-     <div class="overlay">
-       <div class="title">{props.title}</div>
-       <div class="rating">{props.vote_average}/10</div>
-       <div class="plot">
+     <div className="overlay">
+       <div className="title">{props.title}</div>
+       <div className="rating">{props.vote_average}/10</div>
+       <div className="plot">
          {props.overview}
        </div>
-       <div data-toggled="true" class="listToggle">
+       <div data-toggled="true" className="listToggle">
          <div>
-           <i class="fa fa-fw fa-plus"></i
-           ><i class="fa fa-fw fa-check"></i>
+           <i className="fa fa-fw fa-plus"></i
+           ><i className="fa fa-fw fa-check"></i>
          </div>
        </div>
      </div>
